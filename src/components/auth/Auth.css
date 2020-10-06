@@ -1,0 +1,103 @@
+.login-methods {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button {
+    width: auto;
+    display: inline-block;
+    padding: 0 18px 0 6px;
+    border: 0 none;
+    border-radius: 5px;
+    text-decoration: none;
+    -webkit-transition: all 250ms linear;
+    transition: all 250ms linear;
+}
+
+.button:hover {
+    text-decoration: none;
+}
+
+.button--social-login {
+    margin-bottom: 12px;
+    margin-right: 12px;
+    color: white;
+    height: 50px;
+    line-height: 46px;
+    position: relative;
+    text-align: left;
+}
+
+.button--social-login .icon {
+    margin-right: 12px;
+    font-size: 24px;
+    line-height: 24px;
+    width: 42px;
+    height: 24px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+}
+
+.button--social-login .icon:before {
+    display: inline-block;
+    width: 40px;
+}
+
+.button--social-login .icon:after {
+    content: "";
+}
+
+.button--google {
+    background-color: #DD4B39;
+    border: 1px solid #c23321;
+}
+
+.button--google .icon {
+    border-right: 1px solid #c23321;
+}
+
+.button--google .icon:after {
+    border-right: 1px solid #e47365;
+}
+
+.button--google:hover {
+    background-color: #d73925;
+}
+
+.button--facebook {
+    background-color: #4b70ab;
+    border: 1px solid #3b5988;
+}
+
+.button--facebook .icon {
+    border-right: 1px solid #3b5988;
+}
+
+.button--facebook .icon:after {
+    border-right: 1px solid #6b8bbe;
+}
+
+.button--facebook:hover {
+    background-color: #436499;
+}
+
+.button--github {
+    background-color: #333;
+    border: 1px solid #1a1a1a;
+}
+
+.button--github .icon {
+    border-right: 1px solid #1a1a1a;
+}
+
+.button--github .icon:after {
+    border-right: 1px solid #4d4d4d;
+}
+
+.button--github:hover {
+    background-color: #262626;
+}

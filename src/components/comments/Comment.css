@@ -1,0 +1,23 @@
+.rate {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rate .star-ratings {
+  padding: 1rem 0;
+}
+
+.custom-font {
+  text-align: center;
+  font-size: 2rem;
+  font-family: 'Architects Daughter', cursive;
+
+}
+
+.MuiRating-label {
+  color: yellow !important;
+  font-size: 2rem;
+}

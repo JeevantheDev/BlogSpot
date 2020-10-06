@@ -1,13 +1,117 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+html {
+  min-height: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  /* background-color: #f4f3f4; */
+  z-index: 10;
+}
+
+.avatar {
+  width: 100%;
+}
+
+.card-title,
+.flow-text,
+.title,
+.brand-logo {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-size: 100%;
+  background-position: bottom;
+  background-color: #95e8f3;
+  min-height: 100%;
+}
+
+.custom-align {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  padding: 20px;
+  margin-top: 20px;
+}
+
+form button,
+form h5 {
+  margin: 20px 0;
+}
+
+.tox-notifications-container {
+  display: none;
+}
+
+.breadcrumb:before {
+  color: #333 !important;
+}
+
+.custom-action-btn {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.p-2 {
+  padding: 0 0.5rem;
+}
+
+.pad-1 li {
+  padding: 0 2rem;
+}
+
+.center-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.sidenav li a:last-child {
+  padding: 0;
+}
+
+.mar-y {
+  margin: 1rem 0;
+}
+
+.pad-2 {
+  padding: 1rem 0;
+}
+
+.devider {
+  width: 100%;
+  background: rgba(34, 34, 34, 0.2);
+  height: 0.03rem;
+}
+
+
+.custom-align-spinner {
+  display: flex;
+  justify-content: center;
+  margin: 15rem auto;
+}
+
+.custom-align-spinner-2 {
+  display: flex;
+  justify-content: center;
+  margin: auto 15rem;
+}
+
+.float-none li {
+  float: none;
+}
+
+.search-results {
+  position: absolute;
+  z-index: 11;
+  width: 100%;
 }

@@ -104,7 +104,9 @@ const ProjectList = ({ projects, auth }) => {
   };
   return (
     <div className="project-list section">
-      <span className="flow-text ">All activity</span>
+      <span className="flow-text ">
+        All <span className="teal-text">Activity</span>
+      </span>
       <div className="devider"></div>
       <div className="section sticky">
         <div style={{ marginBottom: "0" }} className="row">
@@ -163,7 +165,7 @@ const ProjectList = ({ projects, auth }) => {
         </Fragment>
       ) : (
         <div class="preloader-wrapper active custom-align-spinner-2">
-          <div class="spinner-layer spinner-red-only">
+          <div class="spinner-layer spinner-teal-only">
             <div class="circle-clipper left">
               <div class="circle"></div>
             </div>

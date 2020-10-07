@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
@@ -8,6 +8,7 @@ import renderHTML from "react-render-html";
 import { useState } from "react";
 import { useEffect } from "react";
 import Offline from "../layout/Offline";
+import MetaTags from "../metaTags/MetaTags";
 const SavedDetails = (props) => {
   const { project, auth, id } = props;
   const [save, setSave] = useState([]);
@@ -83,68 +84,71 @@ const SavedDetails = (props) => {
   }
   if (save.length !== 0) {
     return (
-      <div className="container section project-details">
-        <nav>
-          <div className="nav-wrapper blue-grey lighten-4">
+      <Fragment>
+        <MetaTags title={save.title} />
+        <nav className="transparent z-depth-0">
+          <div className="nav-wrapper container">
             <div className="col s12">
-              <Link to="/" className="breadcrumb blue-text text-darken-2">
+              <Link to="/" className="breadcrumb grey-text text-darken-2">
                 Dashboard
               </Link>
               <a href="#" className="breadcrumb blue-text text-darken-2">
-                Blog Detail
+                Favourite Blog
               </a>
             </div>
           </div>
         </nav>
-        <div className="card z-depth-1">
-          <div className="card-content">
-            <div className="custom-action-btn">
-              <a onClick={handleSave} href="#!" class="secondary-content">
-                {flag ? (
-                  <i class="material-icons">grade</i>
-                ) : (
-                  <i class="material-icons">star_outline</i>
-                )}
-              </a>
+        <div className="container section project-details">
+          <div className="card z-depth-1">
+            <div className="card-content">
+              <div className="custom-action-btn">
+                <a onClick={handleSave} href="#!" class="secondary-content">
+                  {flag ? (
+                    <i class="material-icons">grade</i>
+                  ) : (
+                    <i class="material-icons">star_outline</i>
+                  )}
+                </a>
+              </div>
+              <span class="new badge" data-badge-caption=" ">
+                {save.category}
+              </span>
+              <span className="card-title">{save.title}</span>
+              {isNetwork ? (
+                <img src={save.image} alt="Display Image" className="avatar" />
+              ) : (
+                <div className="card blue-grey">
+                  <div className="card-content">
+                    <p className="white-text custom-align">
+                      Sorry you are offline so image is not available
+                    </p>
+                  </div>
+                </div>
+              )}
+              <p>{renderHTML(save.content)}</p>
             </div>
-            <span class="new badge" data-badge-caption=" ">
-              {save.category}
-            </span>
-            <span className="card-title">{save.title}</span>
-            {isNetwork ? (
-              <img src={save.image} alt="Display Image" className="avatar" />
-            ) : (
-              <div className="card blue-grey">
-                <div className="card-content">
-                  <p className="white-text custom-align">
-                    Sorry you are offline so image is not available
+            <div className="card-action grey lighten-4 grey-text">
+              <div className="row valign-wrapper">
+                <div class="col s2">
+                  {isNetwork ? (
+                    <img
+                      src={save.authorImage}
+                      alt="Author Image"
+                      class="circle responsive-img"
+                    />
+                  ) : null}
+                </div>
+                <div className="col s10">
+                  <p>Posted by {save.authorName}</p>
+                  <p className="grey-text">
+                    {moment(save.createAt.toDate).format("LL")}
                   </p>
                 </div>
-              </div>
-            )}
-            <p>{renderHTML(save.content)}</p>
-          </div>
-          <div className="card-action grey lighten-4 grey-text">
-            <div className="row valign-wrapper">
-              <div class="col s2">
-                {isNetwork ? (
-                  <img
-                    src={save.authorImage}
-                    alt="Author Image"
-                    class="circle responsive-img"
-                  />
-                ) : null}
-              </div>
-              <div className="col s10">
-                <p>Posted by {save.authorName}</p>
-                <p className="grey-text">
-                  {moment(save.createAt.toDate).format("LL")}
-                </p>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     );
   } else {
     return (

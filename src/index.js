@@ -26,7 +26,7 @@ const store = createStore(
 );
 
 store.firebaseAuthIsReady.then(() => {
-  ReactDOM.render(
+  ReactDOM.hydrate(
     <Provider store={store}>
       <React.StrictMode>
         <App />

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { createProject } from "../../store/actions/projectActions";
 import { Redirect, Link } from "react-router-dom";
 import EditorArea from "../editor/EditorArea";
+import MetaTags from "../metaTags/MetaTags";
 
 class CreateProject extends Component {
   state = {
@@ -18,6 +19,7 @@ class CreateProject extends Component {
 
     return (
       <Fragment>
+        <MetaTags title={"Create Blog"} />
         <nav className="transparent z-depth-0">
           <div className="nav-wrapper container">
             <div className="col s12">

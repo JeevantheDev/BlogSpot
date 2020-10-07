@@ -9,7 +9,8 @@ import renderHTML from "react-render-html";
 import { useState } from "react";
 import { useEffect } from "react";
 import Comments from "../comments/Comments";
-import Share from "../Share";
+import NoSSR from "react-no-ssr";
+import MetaTags from "../metaTags/MetaTags";
 
 const ProjectDetails = (props) => {
   const { project, auth, id } = props;
@@ -82,6 +83,17 @@ const ProjectDetails = (props) => {
   if (project) {
     return (
       <Fragment>
+        {project ? (
+          <NoSSR>
+            <MetaTags
+              title={project.title}
+              description={project.title}
+              authorName={project.authorName}
+              image={project.image}
+              url={window.location.href}
+            />
+          </NoSSR>
+        ) : null}
         <nav className="transparent z-depth-0">
           <div className="nav-wrapper container">
             <div className="col s12">
@@ -100,7 +112,6 @@ const ProjectDetails = (props) => {
         >
           <div className="card z-depth-1">
             <div className="custom-action-btn pad-2">
-              <Share title={window.location.href} />
               {auth.uid === project.authorId ? (
                 <Fragment>
                   <Link to={`/projectUpdate/${id}`}>
@@ -155,7 +166,7 @@ const ProjectDetails = (props) => {
               </div>
             </div>
           </div>
-          <div className="card p-5 grey darken-2">
+          <div className="card p-5 grey lighten-2">
             <Comments project={project} id={id} />
           </div>
         </div>
@@ -165,7 +176,7 @@ const ProjectDetails = (props) => {
     return (
       <div className="container center custom-align-spinner">
         <div class="preloader-wrapper active">
-          <div class="spinner-layer spinner-red-only">
+          <div class="spinner-layer spinner-teal-only">
             <div class="circle-clipper left">
               <div class="circle"></div>
             </div>

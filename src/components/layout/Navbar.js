@@ -27,7 +27,7 @@ const Navbar = (props) => {
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
         <Link to="/" className="brand-logo">
-          BlogSpot
+          Blog<span className="teal-text text-lighten-2">Spot</span>
         </Link>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger">
           <i class="material-icons">menu</i>

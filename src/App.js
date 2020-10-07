@@ -7,16 +7,15 @@ import Signin from "./components/auth/Signin";
 import CreateProject from "./components/projects/CreateProject";
 import UpdateProject from "./components/projects/UpdateProject";
 import SavedDetails from "./components/projects/SavedDetails";
-import M from "materialize-css";
+import Alertbar from "./components/layout/Alertbar";
+// import M from "materialize-css";
 import { useEffect } from "react";
 function App() {
-  useEffect(() => {
-    M.AutoInit();
-  });
   return (
     <BrowserRouter>
       <div className="App">
         <Navbar />
+        <Alertbar />
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route path="/projects/:id/:slug" component={ProjectDetails} />

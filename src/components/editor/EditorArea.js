@@ -8,6 +8,7 @@ import {
   updateProject,
   uploadImage,
 } from "../../store/actions/projectActions";
+import { setAlert } from "../../store/actions/alertAction";
 import { withRouter } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -55,11 +56,31 @@ const EditorArea = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (type === "create") {
-      props.createProject(data);
-      props.history.push("/");
+      if (
+        data.title !== "" &&
+        data.slug !== "" &&
+        data.image !== "" &&
+        data.category !== "" &&
+        data.content !== ""
+      ) {
+        props.createProject(data);
+        props.history.push("/");
+      } else {
+        props.setAlert("Fill all the area.", "error");
+      }
     } else {
-      props.updateProject(data, id);
-      props.history.push("/");
+      if (
+        data.title !== "" &&
+        data.slug !== "" &&
+        data.image !== "" &&
+        data.category !== "" &&
+        data.content !== ""
+      ) {
+        props.updateProject(data, id);
+        props.history.push("/");
+      } else {
+        props.setAlert("Fill all the area.", "error");
+      }
     }
   };
   return (
@@ -161,6 +182,7 @@ const mapDispatchToProps = (dispatch) => {
     createProject: (project) => dispatch(createProject(project)),
     uploadImage: (image) => dispatch(uploadImage(image)),
     updateProject: (project, id) => dispatch(updateProject(project, id)),
+    setAlert: (msg, type) => dispatch(setAlert(msg, type)),
   };
 };
 

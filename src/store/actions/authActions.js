@@ -1,3 +1,5 @@
+import { setAlert } from "./alertAction";
+
 export const signUpLoginGoogle = () => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
@@ -15,11 +17,17 @@ export const signUpLoginGoogle = () => {
         });
       })
       .then(() => {
+        dispatch(setAlert("Logged in successfully.", "success"));
         dispatch({
           type: "SIGNUP_SUCCESS",
         });
       })
       .catch((err) => {
+        const errors = err.message;
+
+        if (errors) {
+          dispatch(setAlert(errors, "error"));
+        }
         dispatch({
           type: "SIGNUP_ERROR",
           err,
@@ -44,11 +52,17 @@ export const signUpLoginFacebook = () => {
         });
       })
       .then(() => {
+        dispatch(setAlert("Logged in successfully.", "success"));
         dispatch({
           type: "SIGNUP_SUCCESS",
         });
       })
       .catch((err) => {
+        const errors = err.message;
+
+        if (errors) {
+          dispatch(setAlert(errors, "error"));
+        }
         dispatch({
           type: "SIGNUP_ERROR",
           err,
@@ -73,11 +87,17 @@ export const signUpLoginGithub = () => {
         });
       })
       .then(() => {
+        dispatch(setAlert("Logged in successfully.", "success"));
         dispatch({
           type: "SIGNUP_SUCCESS",
         });
       })
       .catch((err) => {
+        const errors = err.message;
+
+        if (errors) {
+          dispatch(setAlert(errors, "error"));
+        }
         dispatch({
           type: "SIGNUP_ERROR",
           err,
@@ -93,6 +113,7 @@ export const signOut = () => {
       .auth()
       .signOut()
       .then(() => {
+        dispatch(setAlert("Logged out successfully.", "warning"));
         dispatch({
           type: "SIGNOUT_SUCCESS",
         });

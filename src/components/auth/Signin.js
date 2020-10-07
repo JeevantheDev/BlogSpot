@@ -5,14 +5,16 @@ import GoogleSignin from "./GoogleSignin";
 import FacebookSignin from "./FacebookSignin";
 import GithubSignin from "./GithubSignin";
 import "./Auth.css";
+import MetaTags from "../metaTags/MetaTags";
 class Signin extends Component {
   render() {
-    const { authError, auth } = this.props;
+    const { auth } = this.props;
     if (auth.uid) return <Redirect to="/" />;
     return (
       <div className="container">
+        <MetaTags title={"Login"} />
         <div style={{ margin: "2rem 0" }} className="custom-align">
-          <form style={{ width: "50%" }} className="card z-depth-1">
+          <form className="card z-depth-1">
             <div className="login-methods card-content">
               <h5 className="grey-text flow-text text-darken-3">
                 Please <span className="teal-text">Login</span> here..
@@ -21,7 +23,6 @@ class Signin extends Component {
               <FacebookSignin />
               <GithubSignin />
             </div>
-            {authError ? <p className="text-red">{authError}</p> : null}
           </form>
         </div>
       </div>

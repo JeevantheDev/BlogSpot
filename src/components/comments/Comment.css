@@ -13,11 +13,10 @@
 .custom-font {
   text-align: center;
   font-size: 2rem;
-  font-family: 'Architects Daughter', cursive;
-
+  font-family: "Josefin Sans", sans-serif;
 }
 
 .MuiRating-label {
-  color: yellow !important;
+  color: #ff6e40 !important;
   font-size: 2rem;
 }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
 
 html {
   min-height: 100%;
@@ -20,7 +20,7 @@ html {
 .flow-text,
 .title,
 .brand-logo {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 body {
@@ -29,7 +29,7 @@ body {
   font-family: sans-serif;
   background-size: 100%;
   background-position: bottom;
-  background-color: #95e8f3;
+  background-color: #c2eff5;
   min-height: 100%;
 }
 
@@ -93,7 +93,6 @@ form h5 {
   height: 0.03rem;
 }
 
-
 .custom-align-spinner {
   display: flex;
   justify-content: center;
@@ -103,7 +102,7 @@ form h5 {
 .custom-align-spinner-2 {
   display: flex;
   justify-content: center;
-  margin: auto 15rem;
+  margin: auto auto;
 }
 
 .float-none li {

@@ -24,4 +24,5 @@ const mapDispatchToProps = (dispatch) => {
     signUpLoginFacebook: () => dispatch(signUpLoginFacebook()),
   };
 };
+
 export default connect(null, mapDispatchToProps)(FacebookSignin);

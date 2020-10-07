@@ -11,7 +11,7 @@ const CommentItems = (props) => {
           comments.map((comment) => {
             return (
               <div className="col s12 m4">
-                <div className="card-panel teal darken-1 z-depth-0">
+                <div className="card-panel blue-grey darken-3 z-depth-1">
                   <Box component="fieldset" borderColor="transparent">
                     <Rating
                       name="disabled"

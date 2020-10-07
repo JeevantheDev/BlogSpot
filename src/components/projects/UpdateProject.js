@@ -4,6 +4,7 @@ import { Redirect, Link } from "react-router-dom";
 import EditorArea from "../editor/EditorArea";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
+import MetaTags from "../metaTags/MetaTags";
 
 const UpdateProject = (props) => {
   const state = {
@@ -18,6 +19,13 @@ const UpdateProject = (props) => {
   if (!auth.uid) return <Redirect to="/signin" />;
   return (
     <Fragment>
+      <MetaTags
+        title={project.title}
+        description={project.title}
+        authorName={project.authorImage}
+        image={project.image}
+        url={window.location.href}
+      />
       <nav className="transparent z-depth-0">
         <div className="nav-wrapper container">
           <div className="col s12">

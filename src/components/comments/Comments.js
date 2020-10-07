@@ -5,6 +5,7 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { updateProject } from "../../store/actions/projectActions";
+import { setAlert } from "../../store/actions/alertAction";
 import "./Comment.css";
 import { useEffect } from "react";
 import CommentItems from "./CommentItems";
@@ -33,6 +34,7 @@ const Comments = (props) => {
   const [user, setUser] = useState(stateUser);
   const [data, setData] = useState(state);
   const [flag, setFlag] = useState(true);
+  const [check, setCheck] = useState(true);
   const [ratings, setRatings] = useState([]);
   const [change, setChange] = useState(true);
   useEffect(() => {
@@ -61,11 +63,23 @@ const Comments = (props) => {
       project.ratings.filter((rating) => {
         if (rating.id === auth.uid) {
           setFlag(false);
+          setCheck(false);
           setStar(rating.rating);
         }
       });
     }
   }, [project]);
+  useEffect(() => {
+    if (star) {
+      setUser({
+        id: auth.uid,
+        authorName: profile.name,
+        authorImage: profile.avatar,
+        createAt: new Date(),
+        rating: star,
+      });
+    }
+  }, [star]);
   useEffect(() => {
     if (user.id !== "") {
       setData({
@@ -75,7 +89,7 @@ const Comments = (props) => {
     }
   }, [user]);
   const [currentPage] = useState(1);
-  const [ratingsPerPage, setRatingsPerPage] = useState(4);
+  const [ratingsPerPage, setRatingsPerPage] = useState(6);
 
   const indexLast = currentPage * ratingsPerPage;
   const indexFast = indexLast - ratingsPerPage;
@@ -86,28 +100,26 @@ const Comments = (props) => {
   };
   const changeRating = (e, value) => {
     setStar(value);
-    setUser({
-      id: auth.uid,
-      authorName: profile.name,
-      authorImage: profile.avatar,
-      createAt: new Date(),
-      rating: value,
-    });
+    setCheck(false);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.updateProject(data, id);
-    setFlag(false);
+    if (check === false) {
+      props.updateProject(data, id);
+      setFlag(false);
+    } else {
+      props.setAlert("Please give the rating.", "error");
+    }
   };
   return (
     <Fragment>
       {auth.uid ? (
         <div className="rate">
-          <span className="white-text custom-font">
+          <span className="teal-text custom-font">
             {flag ? "Give your Rating: " : "Your Rating: "}
           </span>
           <Box component="fieldset" borderColor="transparent">
-            {flag ? (
+            {flag && check ? (
               <Rating
                 name="simple-controlled"
                 value={star}
@@ -135,13 +147,13 @@ const Comments = (props) => {
       </div>
       {change ? (
         <Fragment>
-          {project.ratings.length > 4 ? (
+          {project.ratings.length > 6 ? (
             <a
               onClick={(e) => {
                 e.preventDefault();
                 loadAll(project.ratings.length);
               }}
-              class="waves-effect waves-teal btn-flat custom-align white-text"
+              class="waves-effect waves-teal btn-flat custom-align black-text"
             >
               Load All <i class="large material-icons">arrow_drop_down</i>
             </a>
@@ -151,9 +163,9 @@ const Comments = (props) => {
         <a
           onClick={(e) => {
             e.preventDefault();
-            loadAll(4);
+            loadAll(6);
           }}
-          class="waves-effect waves-teal btn-flat custom-align white-text"
+          class="waves-effect waves-teal btn-flat custom-align black-text"
         >
           Hide All <i class="large material-icons">arrow_drop_up</i>
         </a>
@@ -172,6 +184,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateProject: (project, id) => dispatch(updateProject(project, id)),
+    setAlert: (msg, type) => dispatch(setAlert(msg, type)),
   };
 };
 

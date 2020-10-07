@@ -7,6 +7,7 @@ import { compose } from "redux";
 import Offline from "../layout/Offline";
 import { Redirect } from "react-router-dom";
 import UserBlogs from "./UserBlogs";
+import MetaTags from "../metaTags/MetaTags";
 
 class Dashboard extends Component {
   state = {
@@ -37,13 +38,21 @@ class Dashboard extends Component {
     }
     return (
       <div className="dashboard container">
+        <MetaTags title={"Home"} />
         <div className="row">
           <div className="col s12 m6">
-            <Favourite favourites={this.state.favourites} />
+            <div style={{ marginTop: "0.8rem" }}>
+              <span className="flow-text">
+                Marked as <span className="teal-text">Favourite</span>
+              </span>
+              <Favourite favourites={this.state.favourites} />
+            </div>
             <div className="devider"></div>
             {isNetwork ? (
               <div style={{ marginTop: "1.5rem" }}>
-                <span className="flow-text">Your Blogs</span>
+                <span className="flow-text">
+                  Your <span className="teal-text">Blogs</span>
+                </span>
                 {auth.uid ? (
                   <UserBlogs auth={auth} project={projects} />
                 ) : (

@@ -30,14 +30,12 @@ export const uploadImage = (image) => {
     // Make async call to db
     const firebase = getFirebase();
     const storage = firebase.storage();
-    var metadata = {
-      contentType: "image/jpeg",
-    };
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    let progress;
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const progress = Math.round(
+        progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
       },
@@ -52,6 +50,7 @@ export const uploadImage = (image) => {
           .then((url) => {
             dispatch(setAlert("Image Uploaded Successfully.", "info"));
             dispatch({ type: "UPLOAD_IMAGE", url });
+            dispatch({ type: "STATE_PROGRESS", progress });
           })
           .catch((err) => {
             dispatch({ type: "UPLOAD_IMAGE_ERROR", err });

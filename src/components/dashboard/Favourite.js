@@ -24,7 +24,7 @@ const Favourite = (props) => {
   if (favourites.length > 0) {
     return (
       <Fragment>
-        <div className="section">
+        <div style={{ paddingTop: "0" }} className="section">
           {/* <div className="devider"></div> */}
           <ul className="notifications collection z-depth-1 ">
             {currentData &&

@@ -5,14 +5,14 @@ import "firebase/storage";
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  authDomain: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  databaseURL: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  projectId: "xxxxxxxxxxxxxx",
-  storageBucket: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  messagingSenderId: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  appId: "xxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  measurementId: "xxxxxxxxxxxxxx",
+  apiKey: "****",
+  authDomain: "****",
+  databaseURL: "*****",
+  projectId: "****",
+  storageBucket: "****",
+  messagingSenderId: "****",
+  appId: "1:****:web:****",
+  measurementId: "****",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

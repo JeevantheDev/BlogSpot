@@ -117,7 +117,7 @@ const ProjectList = ({ projects, auth }) => {
               </option>
               <option value="All">All</option>
               <option value="Travelling">Travelling</option>
-              <option value="Cooking">Cooking</option>
+              <option value="Sports">Sports</option>
               <option value="Entertainment">Entertainment</option>
               <option value="Technology">Technology</option>
               <option value="Development">Development</option>

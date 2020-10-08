@@ -20,10 +20,8 @@ const UpdateProject = (props) => {
   return (
     <Fragment>
       <MetaTags
-        title={project.title}
-        description={project.title}
-        authorName={project.authorImage}
-        image={project.image}
+        title={"Update Blog"}
+        description={"Update Blog"}
         url={window.location.href}
       />
       <nav className="transparent z-depth-0">

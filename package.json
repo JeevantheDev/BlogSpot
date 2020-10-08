@@ -13,9 +13,11 @@
     "@testing-library/user-event": "^7.2.1",
     "@tinymce/tinymce-react": "^3.6.0",
     "and": "0.0.3",
+    "axios": "^0.20.0",
     "express": "^4.17.1",
     "firebase": "^7.17.1",
     "ignore-styles": "^5.0.1",
+    "js-file-download": "^0.4.12",
     "materialize-css": "^1.0.0",
     "moment": "^2.27.0",
     "react": "^16.13.1",
@@ -59,6 +61,7 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "http://localhost:5000",
   "devDependencies": {
     "http-server": "^0.12.3"
   }

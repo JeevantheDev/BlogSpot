@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { useState } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 import slugify from "react-slugify";
 import {
   createProject,
@@ -13,7 +14,7 @@ import { withRouter } from "react-router-dom";
 import { useEffect } from "react";
 
 const EditorArea = (props) => {
-  const { state, type, content, id, url } = props;
+  const { state, type, content, id, url, progress } = props;
   const [data, setData] = useState(state);
   const [flag, setFlag] = useState(false);
   useEffect(() => {
@@ -45,8 +46,19 @@ const EditorArea = (props) => {
       setData({ ...data, image: image });
     }
   };
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
     e.preventDefault();
+    // const formData = new FormData();
+    // formData.append("file", data.image);
+    // try {
+    //   const res = await axios.post("/upload", formData, {
+    //     headers: {
+    //       "Content-Type": "multipart/form-data",
+    //     },
+    //   });
+    // } catch (err) {
+    //   console.log(err);
+    // }
     props.uploadImage(data.image);
     setFlag(true);
   };
@@ -120,6 +132,7 @@ const EditorArea = (props) => {
             Upload
           </a>
         </div>
+
         <div className="custom-align">
           <img
             class="materialboxed"
@@ -132,6 +145,12 @@ const EditorArea = (props) => {
             }
           />
         </div>
+        <div class="progress col s6">
+          <div
+            class="determinate"
+            style={{ width: `${progress ? progress : 0}%` }}
+          ></div>
+        </div>
         <div className="input-field">
           <select onChange={optionChange} class="browser-default">
             <option value={data.category} disabled selected>
@@ -140,7 +159,7 @@ const EditorArea = (props) => {
                 : data.category}
             </option>
             <option value="Travelling">Travelling</option>
-            <option value="Cooking">Cooking</option>
+            <option value="Sports">Sports</option>
             <option value="Entertainment">Entertainment</option>
             <option value="Technology">Technology</option>
             <option value="Development">Development</option>
@@ -157,6 +176,23 @@ const EditorArea = (props) => {
                 "searchreplace code fullscreen",
                 "insertdatetime media table paste code help wordcount",
               ],
+              file_picker_types: "file image media",
+              file_picker_callback: function (callback, value, meta) {
+                var input = document.createElement("input");
+                input.setAttribute("type", "file");
+                input.setAttribute("accept", "image/*");
+                input.onchange = function () {
+                  var file = this.files[0];
+                  var reader = new FileReader();
+                  reader.onload = function (e) {
+                    callback(e.target.result, {
+                      alt: file.name,
+                    });
+                  };
+                  reader.readAsDataURL(file);
+                };
+                input.click();
+              },
             }}
             onEditorChange={handleChange}
           />
@@ -172,8 +208,10 @@ const EditorArea = (props) => {
 };
 const mapStateToProps = (state) => {
   var url = state.project.url;
+  var progress = state.project.progress;
   return {
     url: url,
+    progress: progress,
   };
 };
 

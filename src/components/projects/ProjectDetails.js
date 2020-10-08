@@ -114,7 +114,7 @@ const ProjectDetails = (props) => {
             <div className="custom-action-btn pad-2">
               {auth.uid === project.authorId ? (
                 <Fragment>
-                  <Link to={`/projectUpdate/${id}`}>
+                  <Link to={`/projectUpdate/${id}/${project.slug}`}>
                     <i class="material-icons">create</i>
                   </Link>
                   <a

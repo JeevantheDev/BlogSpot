@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ## Blog Spot
-> This is a Full stack Firebase Progressive Web Application using React.js and Redux. User can login using his/her Gmail or Facebook or Github account and write his/her blog. User can give his/her rating to individual blog and also filter the blog posts according to different category and ratings.
+> This is a Full stack Firebase Progressive Web Application using React.js and Redux. User can login using his/her Gmail or Facebook or Github account and write his/her blog. User can give his/her rating to individual blog and also filter the blog posts according to different category and ratings. User can also read his/her favourite blogs in offline mode.
 
 ## Available Scripts
 
